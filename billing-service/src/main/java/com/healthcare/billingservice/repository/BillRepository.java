@@ -1,6 +1,11 @@
 package com.healthcare.billingservice.repository;
 
-import com.healthcare.billingservice.entity.Bill;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-public interface BillRepository extends JpaRepository<Bill, Long> {}
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.healthcare.billingservice.entity.Bill;
+
+public interface BillRepository extends JpaRepository<Bill, Long> {
+
+    Optional<Bill> findByPatientIdAndStatus(Long patientId, String status);
+}
